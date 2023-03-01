@@ -1,16 +1,18 @@
-export default (reducer) => {
+const logger = (reducer) => {
     return (prevState, action) => {
         console.group(action.type);
         console.log(`------------- ${action.type} --------------`);
-        console.log("Prev State: ", prevState);
-        console.log("Action: ", action);
-        
+        console.log('Prev State: ', prevState);
+        console.log('Action: ', action);
+
         const nextState = reducer(prevState, action);
-        
-        console.log("Next State: ", nextState);
+
+        console.log('Next State: ', nextState);
         console.log(`------------- ${action.type} --------------`);
         console.groupEnd();
-        console.log("\n");
+        console.log('\n');
         return nextState;
-    }
-}
+    };
+};
+
+export default logger;
