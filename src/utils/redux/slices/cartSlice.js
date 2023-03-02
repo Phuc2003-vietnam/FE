@@ -1,11 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { buildQueries } from '@testing-library/react';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { cartService } from '../../axios';
 
 /**
  * @type {{
- *      id: string,
- *      name: string,
- *      count: number
+ *      productID: string,
+ *      productName: string,
+ *      count: number,
+ *      isCheck: boolean,
+ *      thumnail: string
  * }[]}
  */
 const initProducts = [];
@@ -14,17 +16,34 @@ const cartSlice = createSlice({
     name: 'cart',
     initialState: {
         products: initProducts,
+        isLoading: false,
+        isError: false
     },
     reducers: {
-        // removeItem: (state, action) => {
-        //     const productID = action.payload;
-        //     const products = state.products.filter(product => product.id !== productID);
-        //     return products;
-        // },
-        // changeCountItem: (state, action) => {
-        //     const productID = action.payload.productID;
-        //     const count = action.payload.count;
-        // }
+        
     },
-    extraReducers: (builder) => {},
+    extraReducers: (builder) => {
+        builder.addCase(fetchAllCarts.pending, state => {
+            state.isLoading = true;
+            state.isError = false;
+        })
+        .addCase(fetchAllCarts.fulfilled, (state, action) => {
+            state.isLoading = false;
+            state.products = action.payload;
+        })
+        .addCase(fetchAllCarts.rejected, state => {
+            state.isLoading = false;
+            state.isError = true;
+        })
+    },
+});
+
+export default cartSlice;
+
+export const fetchAllCarts = createAsyncThunk('cart/getAllCarts', async () => {
+    const data = await cartService.getAllCarts();
+
+    console.log("Data: ", data);
+
+    return data;
 });

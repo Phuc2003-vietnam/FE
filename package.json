@@ -45,5 +45,8 @@
   "devDependencies": {
     "prettier": "^2.8.4",
     "tailwindcss": "^3.2.7"
+  },
+  "alias": {
+    "~/*": "./src/*"
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Count = ({ number = 0, onClickInc, onClickDec, onChangeNumber }) => {
+    
     const handleChangeNumber = (e) => {
         let value = Number(e.target.value);
 

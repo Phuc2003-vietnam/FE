@@ -1,5 +1,7 @@
-import './cart.css';
 import React from 'react';
+import propTypes from 'prop-types';
+import './cart.css';
+
 import Count from '../Count';
 
 const fakeUrlImage =
@@ -24,7 +26,7 @@ const Cart = ({
             </div>
 
             <div className="flex-1 flex flex-col justify-between">
-                <div className="flex-initial font-bold overflow-auto">
+                <div className="text-2xl flex-initial font-bold overflow-auto">
                     {name}
                 </div>
                 <div className="flex-initial font-mono">{price} đ/sản phẩm</div>
@@ -61,5 +63,20 @@ const Cart = ({
         </div>
     );
 };
+
+Cart.propTypes = {
+    name : propTypes.string,
+    price : propTypes.oneOfType([
+        propTypes.number, propTypes.string
+    ]),
+    thumnailURL : propTypes.string,
+    count : propTypes.number,
+    isCheck : propTypes.bool,
+    onChangeCheckbox : propTypes.func,
+    onClickInc : propTypes.func,
+    onClickDec : propTypes.func,
+    onChangeNumber : propTypes.func,
+    onClickRemove : propTypes.func,
+}
 
 export default Cart;
