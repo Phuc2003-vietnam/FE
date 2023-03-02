@@ -1,0 +1,7 @@
+.cart-height {
+    height: var(--width-thumnail);
+}
+
+.cart-width {
+    width: calc(var(--width-thumnail) * 4);
+}

@@ -1,3 +1,96 @@
+* {
+    --primary-color: #ffffff;
+    --secondary-color: #1db9ce;
+    --tertiary-color: #bceadf;
+    --fourth-color: #5f7ab7;
+    --fifth-color: #1b47a5;
+    --cancel-color: #f91a47;
+
+    --width-thumnail: 150px;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.primary-bg-color {
+    background-color: var(--primary-color);
+}
+
+.secondary-bg-color {
+    background-color: var(--secondary-color);
+}
+
+.tertiary-bg-color {
+    background-color: var(--tertiary-color);
+}
+
+.fourth-bg-color {
+    background-color: var(--fourth-color);
+}
+
+.fifth-bg-color {
+    background-color: var(--fifth-color);
+}
+
+.cancel-bg-color {
+    background-color: var(--cancel-color);
+}
+
+.primary-color {
+    color: var(--primary-color);
+}
+
+.secondary-color {
+    color: var(--secondary-color);
+}
+
+.tertiary-color {
+    color: var(--tertiary-color);
+}
+
+.fourth-color {
+    color: var(--fourth-color);
+}
+
+.fifth-color {
+    color: var(--fifth-color);
+}
+
+.cancel-color {
+    color: var(--cancel-color);
+}
+
+.primary-border-color {
+    border-color: var(--primary-color);
+}
+
+.secondary-border-color {
+    border-color: var(--secondary-color);
+}
+
+.tertiary-border-color {
+    border-color: var(--tertiary-color);
+}
+
+.fourth-border-color {
+    border-color: var(--fourth-color);
+}
+
+.fifth-border-color {
+    border-color: var(--fifth-color);
+}
+
+.cancel-border-color {
+    border-color: var(--cancel-color);
+}
+
+.thumnail {
+    width: var(--width-thumnail);
+    height: var(--width-thumnail);
+    border-radius: 15px;
+}
+
 .App {
     text-align: center;
 }

@@ -1,12 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const ProductList = props => {
-  return (
-    <div>ProductList</div>
-  )
-}
+const ProductList = (props) => {
+    return <div>ProductList</div>;
+};
 
-ProductList.propTypes = {}
+ProductList.propTypes = {};
 
-export default ProductList
+export default ProductList;

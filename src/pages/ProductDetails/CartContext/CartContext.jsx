@@ -1,12 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-const CartContext = props => {
-  return (
-    <div>CartContext</div>
-  )
-}
+const CartContext = (props) => {
+    return <div>CartContext</div>;
+};
 
-CartContext.propTypes = {}
+CartContext.propTypes = {};
 
-export default CartContext
+export default CartContext;
