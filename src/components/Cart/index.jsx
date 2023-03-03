@@ -2,6 +2,9 @@ import React from 'react';
 import propTypes from 'prop-types';
 import './cart.css';
 
+import { formatCurrency } from '~/utils/formats';
+
+import { Checkbox } from 'antd';
 import Count from '../Count';
 
 const fakeUrlImage =
@@ -29,14 +32,15 @@ const Cart = ({
                 <div className="text-2xl flex-initial font-bold overflow-auto">
                     {name}
                 </div>
-                <div className="flex-initial font-mono">{price} đ/sản phẩm</div>
+                <div className="flex-initial font-mono">
+                    {formatCurrency.format(price)}/sản phẩm
+                </div>
             </div>
 
-            <div className="flex-1 flex flex-col justify-between items-end cart-height">
+            <div className="flex flex-col justify-between items-end cart-height">
                 <div className="container flex justify-end">
-                    <input
-                        type={'checkbox'}
-                        value={isCheck}
+                    <Checkbox 
+                        checked={isCheck}
                         onChange={(e) => {
                             onChangeCheckbox(e.target.value);
                         }}
@@ -52,11 +56,11 @@ const Cart = ({
 
                 <div>
                     <button
-                        className="cancel-bg-color p-1 rounded"
+                        className="flex items-center cancel-bg-color p-1 rounded"
                         onClick={onClickRemove}
                     >
                         <i className="fa fa-close m-1"></i>
-                        <label>Remove</label>
+                        <label className='text-xs'>Remove</label>
                     </button>
                 </div>
             </div>

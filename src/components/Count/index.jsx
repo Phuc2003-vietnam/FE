@@ -12,21 +12,21 @@ const Count = ({ number = 0, onClickInc, onClickDec, onChangeNumber }) => {
     };
 
     return (
-        <div>
+        <div className='flex items-center'>
             <button
-                className="text-center w-7 border-2 cancel-border-color rounded-l-md primary-bg-color cancel-color hover:bg-zinc-400 hover:border-zinc-400 hover:text-white"
+                className="text-center h-10 w-7 border-2 cancel-border-color rounded-l-md primary-bg-color cancel-color hover:bg-zinc-400 hover:border-zinc-400 hover:text-white"
                 onClick={onClickDec}
             >
                 <i className="fa fa-minus"></i>
             </button>
             <input
-                className="text-center m-0 w-16 border border-black"
+                className="text-center text-lg m-0 h-10 w-16 border border-black"
                 type={'text'}
                 value={number}
                 onChange={handleChangeNumber}
             />
             <button
-                className="text-center w-7 border fifth-border-color rounded-r-md fifth-bg-color primary-color hover:bg-zinc-400 hover:border-zinc-400"
+                className="text-center h-10 w-7 border fifth-border-color rounded-r-md fifth-bg-color primary-color hover:bg-zinc-400 hover:border-zinc-400"
                 onClick={onClickInc}
             >
                 <i className="fa fa-plus"></i>

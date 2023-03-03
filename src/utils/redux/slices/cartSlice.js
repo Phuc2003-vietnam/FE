@@ -3,6 +3,7 @@ import { cartService } from '../../axios';
 
 /**
  * @type {{
+ *      cartID: string,
  *      productID: string,
  *      productName: string,
  *      count: number,
@@ -46,3 +47,7 @@ export const fetchAllCarts = createAsyncThunk('cart/getAllCarts', async () => {
 
     return data;
 });
+
+export const updateCart = createAsyncThunk('cart/updateCart', async (cartID) => {
+    
+})
