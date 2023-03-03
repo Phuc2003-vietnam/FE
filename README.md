@@ -22,6 +22,7 @@ Should **use** before commit code.
     |   |-- components    
     |   |-- containers
     |   |-- configs
+    |   |-- routes
     |   |-- utils
     |   |   |-- axios
     |   |   |-- redux
@@ -33,10 +34,15 @@ Should **use** before commit code.
     |-- package.json
 ```
 
-## Library in project
+## Libraries in project
 
 * Axios
 * Redux
 * TailwindCss
 * React-router-dom
 * Ant Design
+
+## Build with modules
+
+* react-app-rewired
+* babel
