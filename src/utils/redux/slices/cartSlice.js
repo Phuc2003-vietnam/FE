@@ -48,6 +48,7 @@ export const fetchAllCarts = createAsyncThunk('cart/getAllCarts', async () => {
     return data;
 });
 
-export const updateCart = createAsyncThunk('cart/updateCart', async (cartID) => {
-    
-})
+export const updateCart = createAsyncThunk(
+    'cart/updateCart',
+    async (cartID) => {},
+);

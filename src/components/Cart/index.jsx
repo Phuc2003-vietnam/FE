@@ -39,7 +39,7 @@ const Cart = ({
 
             <div className="flex flex-col justify-between items-end cart-height">
                 <div className="container flex justify-end">
-                    <Checkbox 
+                    <Checkbox
                         checked={isCheck}
                         onChange={(e) => {
                             onChangeCheckbox(e.target.value);
@@ -56,11 +56,11 @@ const Cart = ({
 
                 <div>
                     <button
-                        className="flex items-center cancel-bg-color p-1 rounded"
+                        className="flex items-center cancel-bg-color p-1 rounded primary-color"
                         onClick={onClickRemove}
                     >
                         <i className="fa fa-close m-1"></i>
-                        <label className='text-xs'>Remove</label>
+                        <label className="text-xs">Remove</label>
                     </button>
                 </div>
             </div>
