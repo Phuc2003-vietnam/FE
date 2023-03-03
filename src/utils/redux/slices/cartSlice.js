@@ -17,24 +17,23 @@ const cartSlice = createSlice({
     initialState: {
         products: initProducts,
         isLoading: false,
-        isError: false
+        isError: false,
     },
-    reducers: {
-        
-    },
+    reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(fetchAllCarts.pending, state => {
-            state.isLoading = true;
-            state.isError = false;
-        })
-        .addCase(fetchAllCarts.fulfilled, (state, action) => {
-            state.isLoading = false;
-            state.products = action.payload;
-        })
-        .addCase(fetchAllCarts.rejected, state => {
-            state.isLoading = false;
-            state.isError = true;
-        })
+        builder
+            .addCase(fetchAllCarts.pending, (state) => {
+                state.isLoading = true;
+                state.isError = false;
+            })
+            .addCase(fetchAllCarts.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.products = action.payload;
+            })
+            .addCase(fetchAllCarts.rejected, (state) => {
+                state.isLoading = false;
+                state.isError = true;
+            });
     },
 });
 
@@ -43,7 +42,7 @@ export default cartSlice;
 export const fetchAllCarts = createAsyncThunk('cart/getAllCarts', async () => {
     const data = await cartService.getAllCarts();
 
-    console.log("Data: ", data);
+    console.log('Data: ', data);
 
     return data;
 });

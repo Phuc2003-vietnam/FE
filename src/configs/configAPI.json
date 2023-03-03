@@ -2,7 +2,5 @@
     "development": {
         "getAllCart": "api/v1/cart"
     },
-    "production": {
-
-    }
+    "production": {}
 }

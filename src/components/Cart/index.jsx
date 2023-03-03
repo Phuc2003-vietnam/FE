@@ -65,18 +65,16 @@ const Cart = ({
 };
 
 Cart.propTypes = {
-    name : propTypes.string,
-    price : propTypes.oneOfType([
-        propTypes.number, propTypes.string
-    ]),
-    thumnailURL : propTypes.string,
-    count : propTypes.number,
-    isCheck : propTypes.bool,
-    onChangeCheckbox : propTypes.func,
-    onClickInc : propTypes.func,
-    onClickDec : propTypes.func,
-    onChangeNumber : propTypes.func,
-    onClickRemove : propTypes.func,
-}
+    name: propTypes.string,
+    price: propTypes.oneOfType([propTypes.number, propTypes.string]),
+    thumnailURL: propTypes.string,
+    count: propTypes.number,
+    isCheck: propTypes.bool,
+    onChangeCheckbox: propTypes.func,
+    onClickInc: propTypes.func,
+    onClickDec: propTypes.func,
+    onChangeNumber: propTypes.func,
+    onClickRemove: propTypes.func,
+};
 
 export default Cart;

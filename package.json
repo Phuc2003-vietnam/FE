@@ -17,10 +17,17 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "babel-plugin-module-resolver": "^5.0.0",
+    "customize-cra": "^1.0.0",
+    "prettier": "^2.8.4",
+    "react-app-rewired": "^2.2.1",
+    "tailwindcss": "^3.2.7"
+  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
     "eject": "react-scripts eject",
     "clean": "prettier --config ./.prettierrc --write ./src/**/*.{js,jsx,json,css}"
   },
@@ -41,12 +48,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "prettier": "^2.8.4",
-    "tailwindcss": "^3.2.7"
-  },
-  "alias": {
-    "~/*": "./src/*"
   }
+  
 }

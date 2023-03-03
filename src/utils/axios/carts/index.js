@@ -1,4 +1,4 @@
-import Axios from "..";
+import Axios from '..';
 import configAPI from '../../../configs/configAPI.json';
 
 const NODE_ENV = process.env.NODE_ENV;
@@ -13,5 +13,5 @@ export const getAllCarts = async () => {
         } catch (err) {
             reject(err);
         }
-    })
-}
+    });
+};
