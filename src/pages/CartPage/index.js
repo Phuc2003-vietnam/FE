@@ -91,7 +91,7 @@ const CartPage = () => {
 
                 <div className="h-16 w-1"></div>
 
-                <div className="fixed left-1/2 -translate-x-1/2 bottom-4 h-16 w-1/2 mx-auto bg-slate-300 rounded-lg shadow-xl flex flex-row items-center justify-between">
+                <div className="fixed left-1/2 -translate-x-1/2 bottom-4 h-16 w-1/3 mx-auto bg-slate-300 rounded-lg shadow-xl flex flex-row items-center justify-between">
                     <div className="m-2 h-full flex flex-col">
                         <label className="mt-1 font-bold">Tổng số tiền: </label>
                         <div className="text-2xl ml-10">
