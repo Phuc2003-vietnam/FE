@@ -1,6 +1,7 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import './cart.css';
+import classNames from 'classnames';
 
 import { formatCurrency } from '~/utils/formats';
 
@@ -21,9 +22,16 @@ const Cart = ({
     onClickDec,
     onChangeNumber,
     onClickRemove,
+    readonly,
+    className,
 }) => {
     return (
-        <div className="flex flex-row p-2 rounded-lg tertiary-bg-color shadow-lg cart-width m-2">
+        <div
+            className={classNames('flex flex-row p-2 cart-width', className, {
+                'rounded-lg tertiary-bg-color shadow-lg  m-2': !readonly,
+                'border-b-2 border-gray-500': readonly,
+            })}
+        >
             <div className="mr-4">
                 <img className="thumnail" src={thumnailURL} />
             </div>
@@ -37,33 +45,45 @@ const Cart = ({
                 </div>
             </div>
 
-            <div className="flex flex-col justify-between items-end cart-height">
-                <div className="container flex justify-end">
-                    <Checkbox
-                        checked={isCheck}
-                        onChange={(e) => {
-                            onChangeCheckbox(e.target.value);
-                        }}
-                    />
-                </div>
+            {!readonly ? (
+                <div className="flex flex-col justify-between items-end cart-height">
+                    <div className="container flex justify-end">
+                        <Checkbox
+                            checked={isCheck}
+                            onChange={(e) => {
+                                onChangeCheckbox(e.target.value);
+                            }}
+                        />
+                    </div>
 
+                    <Count
+                        number={count}
+                        onChangeNumber={onChangeNumber}
+                        onClickDec={onClickDec}
+                        onClickInc={onClickInc}
+                    />
+
+                    <div>
+                        <button
+                            className="flex items-center cancel-bg-color p-1 rounded primary-color"
+                            onClick={onClickRemove}
+                        >
+                            <i className="fa fa-close m-1"></i>
+                            <label className="text-xs cursor-pointer">
+                                Remove
+                            </label>
+                        </button>
+                    </div>
+                </div>
+            ) : (
                 <Count
                     number={count}
                     onChangeNumber={onChangeNumber}
                     onClickDec={onClickDec}
                     onClickInc={onClickInc}
+                    readonly
                 />
-
-                <div>
-                    <button
-                        className="flex items-center cancel-bg-color p-1 rounded primary-color"
-                        onClick={onClickRemove}
-                    >
-                        <i className="fa fa-close m-1"></i>
-                        <label className="text-xs">Remove</label>
-                    </button>
-                </div>
-            </div>
+            )}
         </div>
     );
 };
@@ -79,6 +99,8 @@ Cart.propTypes = {
     onClickDec: propTypes.func,
     onChangeNumber: propTypes.func,
     onClickRemove: propTypes.func,
+    readonly: propTypes.bool,
+    className: propTypes.string,
 };
 
 export default Cart;
