@@ -15,9 +15,11 @@ const DefaultLayout = ({ children }) => {
                 <div className="mx-4">
                     <SearchInput />
                 </div>
-                <div className="text-3xl cursor-pointer">
-                    <BsFillCartFill />
-                </div>
+                <Link to="/cart">
+                    <div className="text-3xl cursor-pointer">
+                        <BsFillCartFill />
+                    </div>
+                </Link>
             </div>
             <div>{children}</div>
         </div>

@@ -34,7 +34,7 @@ const Count = ({
                         <i className="fa fa-minus"></i>
                     </button>
                     <input
-                        className="text-center text-lg m-0 h-10 w-16 border border-black"
+                        className="text-center text-lg m-0 h-10 w-16 border border-black hover:border-blue-500"
                         type={'text'}
                         value={number}
                         onChange={handleChangeNumber}

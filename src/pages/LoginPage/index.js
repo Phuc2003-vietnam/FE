@@ -40,16 +40,16 @@ const LoginPage = () => {
             <div className="relative w-1/4 primary-bg-color shadow-2xl">
                 <div className="flex flex-col m-10">
                     <div className="flex flex-col mb-10">
-                        <label className="text-2xl font-bold">LOGIN</label>
+                        <label className="mt-1 text-2xl font-bold">LOGIN</label>
                         <label className="text-gray-700">
                             Welcome to Webdev Sellshoes
                         </label>
                     </div>
                     <div className="flex flex-col mb-6">
                         <label className="text-xs font-bold mb-2">EMAIL</label>
-                        <div className="flex flex-row bg-gray-300 rounded-sm">
+                        <div className="flex flex-row bg-gray-300 rounded-sm border border-transparent hover:border-[#1db9ce]">
                             <div className="flex items-center justify-center secondary-bg-color w-10 h-10 rounded-l-sm">
-                                <i className="fa fa-envelope-o" />
+                                <i className="fa fa-at" />
                             </div>
                             <input
                                 className="bg-transparent flex-1 pl-1 focus:outline-none"
@@ -64,7 +64,7 @@ const LoginPage = () => {
                         <label className="text-xs font-bold mb-2">
                             PASSWORD
                         </label>
-                        <div className="flex flex-row bg-gray-300 rounded-sm">
+                        <div className="flex flex-row bg-gray-300 rounded-sm border border-transparent hover:border-[#1db9ce]">
                             <div className="flex items-center justify-center secondary-bg-color w-10 h-10 rounded-l-sm">
                                 <i className="fa fa-key" />
                             </div>
