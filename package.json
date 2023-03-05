@@ -1,6 +1,7 @@
 {
   "name": "front-end",
   "version": "0.1.0",
+  "homepage": "https://github.com/Phuc2003-vietnam/FE",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
