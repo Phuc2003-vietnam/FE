@@ -4,8 +4,11 @@ import Thumbnail from '~/components/Thumbnail';
 import Feature from '~/components/Features';
 const { Footer, Sider, Content } = Layout;
 
-const HomePage = () => (
-    <Space
+
+
+const HomePage = () => {
+    return (
+        <Space
         direction="vertical"
         style={{
             width: '100%',
@@ -50,6 +53,7 @@ const HomePage = () => (
                 <Footer style={{ backgroundColor: '#fff' }}>Footer</Footer>
             </Layout>
         </Layout>
-    </Space>
-);
+        </Space>
+    )
+};
 export default HomePage;

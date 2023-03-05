@@ -1,16 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './thumbitem.scss';
-const ThumbItem = () => {
+const ThumbItem = (props) => {
     return (
-        <div className="w-full h-full text-center cursor-pointer" id="poster">
-            <div className="relative">
+            <div className="w-full h-full text-center cursor-pointer" id="poster">
+            <div className="relative h-2/3">
                 <img
-                    src="https://ananas.vn/wp-content/uploads/Pro_AV00174_2-500x500.jpeg"
+                    src = {props.element.image === '' ? 'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg' : props.element.image}
                     alt="giay"
+                    className='w-full h-full object-cover'
                 />
                 <div className="btn absolute bottom-0 left-0 w-full invisible  opacity-0">
-                    <Link to="/product">
+                    <Link to={`/product/${props.element.id}`}>
                         <button
                             type="button"
                             className="mb-4 w-1/2 focus:outline-none text-white bg-yellow-40font-medium rounded-lg text-sm px-5 py-5 bg-[#1B47A5]"
@@ -20,12 +21,12 @@ const ThumbItem = () => {
                     </Link>
                 </div>
             </div>
-            <div>
-                <p href="facebook.com">Vintas Jazico - High Top</p>
-                <p className="py-2">Royal White</p>
-                <span>780.000 VND</span>
+            <div className='my-4'>
+                <p className='text-xl font-bold mb-4'>{props.element.name}</p>
+                <span>{props.element.price}</span>
             </div>
         </div>
+        
     );
 };
 

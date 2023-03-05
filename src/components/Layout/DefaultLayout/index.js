@@ -19,7 +19,7 @@ const DefaultLayout = ({ children }) => {
                     <BsFillCartFill />
                 </div>
             </div>
-            <div>{children}</div>
+            <div className="w-[1400px] m-[auto]">{children}</div>
         </div>
     );
 };

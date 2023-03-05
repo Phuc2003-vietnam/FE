@@ -8,7 +8,7 @@ const Feature = (props) => {
         setToggle(!toggle);
     };
     return (
-        <div className="w-full text-start mb-8">
+        <div className="w-full text-start mb-8 px-4">
             <div
                 className="mb-2 flex items-center cursor-pointer"
                 onClick={handleToggle}
@@ -29,16 +29,16 @@ const Feature = (props) => {
                 </ul>
             ) : (
                 <ul className="">
-                    <li className="text-md py-2 hover:bg-red-500">
+                    <li className="font-bold  rounded-md hover:text-[#293956] cursor-pointer text-md py-2 hover:bg-[var(--bg-feature)] text-[var(--color-feature)]">
                         {feature1}
                     </li>
-                    <li className="text-md py-2 hover:bg-red-500">
+                    <li className="font-bold  rounded-md hover:text-[#293956] cursor-pointer text-md py-2 hover:bg-[var(--bg-feature)] text-[var(--color-feature)]">
                         {feature2}
                     </li>
-                    <li className="text-md py-2 hover:bg-red-500">
+                    <li className="font-bold  rounded-md hover:text-[#293956] cursor-pointer text-md py-2 hover:bg-[var(--bg-feature)] text-[var(--color-feature)]">
                         {feature3}
                     </li>
-                    <li className="text-md py-2 hover:bg-red-500">
+                    <li className="font-bold  rounded-md hover:text-[#293956] cursor-pointer text-md py-2 hover:bg-[var(--bg-feature)] text-[var(--color-feature)]">
                         {feature4}
                     </li>
                 </ul>

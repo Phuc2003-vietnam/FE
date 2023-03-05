@@ -10,7 +10,7 @@ export const publicRoute = [
     { path: '/login', page: LoginPage, layout: null },
     { path: '/register', page: RegisterPage, layout: null },
     { path: '/', page: HomePage, layout: DefaultLayout },
-    { path: '/product', page: ProductDetail, layout: DefaultLayout },
+    { path: '/product/:id', page: ProductDetail, layout: DefaultLayout },
     { path: 'search-result', page: SearchResult, layout: DefaultLayout },
 ];
 

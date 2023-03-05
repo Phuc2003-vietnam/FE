@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addCart } from '~/utils/redux/ProductDetail';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
 const ProductDetail = () => {
+    const [data, setData] = useState([])
+    useEffect(() => {
+        axios.get('https://webdevshoes-ha3p.onrender.com/v1/shoes/all-shoes')
+        .then(res => setData(res.data))
+    }, [])
+    const {id} = useParams();
+    const productDetail = data.find(element => element.id === id)
+
+
+
     const dispatch = useDispatch();
     const [size, setSize] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -43,13 +54,13 @@ const ProductDetail = () => {
                 <div className="w-[640px] h-full">
                     <img
                         className="w-full h-full"
-                        src="https://ananas.vn/wp-content/uploads/Pro_AV00174_1.jpeg"
+                        src={productDetail.image}
                         alt="giay"
                     />
                 </div>
                 <div className="w-1/2 h-full flex flex-col p-16">
                     <h2 className="text-4xl font-bold mb-12">
-                        VINTAS JAZICO - HIGH TOP - ROYAL WHITE
+                        {productDetail.name}
                     </h2>
                     <div className="flex justify-between mb-12">
                         <span>
