@@ -7,7 +7,8 @@ import {
     cartProducts,
     stateCartPage,
 } from '~/utils/redux/selectors/cartSelector';
-import { fetchAllCarts } from '~/utils/redux/slices/cartSlice';
+import { tokenSelector } from '~/utils/redux/selectors/userSelector'; 
+import { fetchCarts } from '~/utils/redux/slices/cartSlice';
 
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -18,8 +19,12 @@ const CartPage = () => {
 
     const products = useSelector(cartProducts);
     const state = useSelector(stateCartPage);
+    const token = useSelector(tokenSelector);
 
-    const handleChangeCheckbox = (cartID) => {};
+    const handleChangeCheckbox = (cartID) => {
+        const cart = products.find(value => value.cartId)
+
+    };
 
     const handleClickInc = (cartID) => {};
 
@@ -32,7 +37,7 @@ const CartPage = () => {
     const handleClickPayment = () => {};
 
     useEffect(() => {
-        dispatch(fetchAllCarts());
+        dispatch(fetchCarts(token.accessToken));
     }, []);
 
     const sumPrice = useMemo(
@@ -62,7 +67,7 @@ const CartPage = () => {
                 <div className="w-full flex flex-roww justify-evenly items-start flex-wrap">
                     {products.map((value) => (
                         <Cart
-                            key={value.cartID}
+                            key={value.cartId}
                             name={value.productName}
                             count={value.count}
                             price={value.price}
@@ -91,7 +96,7 @@ const CartPage = () => {
 
                 <div className="h-16 w-1"></div>
 
-                <div className="fixed left-1/2 -translate-x-1/2 bottom-4 h-16 w-1/2 mx-auto bg-slate-300 rounded-lg shadow-xl flex flex-row items-center justify-between">
+                <div className="fixed left-1/2 -translate-x-1/2 bottom-4 h-16 w-1/3 mx-auto bg-[#FFE196] rounded-lg shadow-xl flex flex-row items-center justify-between">
                     <div className="m-2 h-full flex flex-col">
                         <label className="mt-1 font-bold">Tổng số tiền: </label>
                         <div className="text-2xl ml-10">
