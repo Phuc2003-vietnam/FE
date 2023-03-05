@@ -1,14 +1,24 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux'; 
+
+import { login } from '~/utils/axios/auth';
+import userSlice from '~/utils/redux/slices/userSlice';
 
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { ToastContainer, toast } from 'react-toastify';
 
 const LoginPage = () => {
     const [Email, setEmail] = useState('');
     const [Password, setPassword] = useState('');
     const [HiddenPassword, setHiddenPassword] = useState(true);
     const [IsLoading, setIsLoading] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+    const params = useParams();
 
     const handleChangeEmail = (e) => {
         const value = e.target.value;
@@ -26,13 +36,24 @@ const LoginPage = () => {
 
     const handleLogin = async () => {
         setIsLoading(true);
-        // TODO: Post Email and Password to BE
+        try {
+            // TODO: Post Email and Password to BE
+            const data = await login(Email, Password);
 
-        // TODO: handle Login fail
-
-        // TODO: get token (or userID) to userSlice
-
-        // TODO: navigate to HomePage (or another page)
+            toast.info('Login success');
+            setIsLoading(false);
+            // TODO: get token (or userID) to userSlice
+            dispatch(userSlice.actions.changeUserData(data))
+            // TODO: navigate to HomePage (or another page)
+            // const page = params.page || '/';
+            navigate(-1, {
+                replace: true
+            });
+        } catch (err) {
+            // TODO: handle Login fail
+            toast.error('Login error');
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -115,6 +136,19 @@ const LoginPage = () => {
                     </div>
                 )}
             </div>
+
+            <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };

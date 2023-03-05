@@ -1,45 +1,61 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux'; 
+
+import { register } from '~/utils/axios/auth';
+import userSlice from '~/utils/redux/slices/userSlice';
 
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
+import { ToastContainer, toast } from 'react-toastify';
 
 const RegisterPage = () => {
-    const [Email, setEmail] = useState('');
-    const [Fullname, setFullname] = useState('');
-    const [Phone, setPhone] = useState('');
-    const [Address, setAddress] = useState('');
-    const [Password, setPassword] = useState('');
-    const [RePassword, setRePassword] = useState('');
+    const [Email, setEmail] = useState(sessionStorage.getItem('email') || '');
+    const [Fullname, setFullname] = useState(sessionStorage.getItem('fullname') || '');
+    const [Phone, setPhone] = useState(sessionStorage.getItem('phone') || '');
+    const [Address, setAddress] = useState(sessionStorage.getItem('address') || '');
+    const [Password, setPassword] = useState(sessionStorage.getItem('password') || '');
+    const [RePassword, setRePassword] = useState(sessionStorage.getItem('re-password') || '');
     const [HiddenPassword, setHiddenPassword] = useState(true);
     const [HiddenRePassword, setHiddenRePassword] = useState(true);
     const [IsLoading, setIsLoading] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+    const params = useParams();
+
     const handleChangeEmail = (e) => {
         const value = e.target.value;
+        sessionStorage.setItem('email', value);
         setEmail(value);
     };
 
     const handleChangeFullname = (e) => {
         const value = e.target.value;
+        sessionStorage.setItem('fullname', value);
         setFullname(value);
     };
     const handleChangePhone = (e) => {
         const value = e.target.value;
+        sessionStorage.setItem('phone', value);
         setPhone(value);
     };
     const handleChangeAddress = (e) => {
         const value = e.target.value;
+        sessionStorage.setItem('address', value);
         setAddress(value);
     };
 
     const handleChangePassword = (e) => {
         const value = e.target.value;
+        sessionStorage.setItem('password', value);
         setPassword(value);
     };
 
     const handleChangeRePassword = (e) => {
         const value = e.target.value;
+        sessionStorage.setItem('re-password', value);
         setRePassword(value);
     };
 
@@ -52,19 +68,35 @@ const RegisterPage = () => {
     };
 
     const handleRegister = async () => {
+        if (Password !== RePassword) {
+            toast.error('RePassword is different from Password');
+            return;
+        }
+
         setIsLoading(true);
-        // TODO: Post Email and Password to BE
+        try {
+            // TODO: Post Email and Password to BE
+            const data = await register(Email, Password, Fullname, Phone, Address);
 
-        // TODO: handle Login fail
-
-        // TODO: get token (or userID) to userSlice
-
-        // TODO: navigate to HomePage (or another page)
+            toast.info('Register success');
+            setIsLoading(false);
+            // TODO: get token (or userID) to userSlice
+            dispatch(userSlice.actions.changeUserData(data))
+            // TODO: navigate to HomePage (or another page)
+            // const page = params.page || '/';
+            navigate(-1, {
+                replace: true
+            });
+        } catch (err) {
+            // TODO: handle Login fail
+            toast.error('Register error');
+            setIsLoading(false);
+        }
     };
 
     return (
-        <div className="overflow-auto h-screen w-full flex items-center justify-center secondary-bg-color">
-            <div className="relative w-1/4 primary-bg-color shadow-2xl">
+        <div className="overflow-auto min-h-screen w-full flex items-center justify-center secondary-bg-color">
+            <div className="relative mt-1 w-1/4 primary-bg-color shadow-2xl">
                 <div className="flex flex-col mx-10 mb-5 mt-5">
                     <div className="flex flex-col mb-5">
                         <label className="text-2xl font-bold">Register</label>
@@ -96,8 +128,8 @@ const RegisterPage = () => {
                             </div>
                             <input
                                 className="bg-transparent flex-1 pl-1 focus:outline-none"
-                                name="email"
-                                type="email"
+                                name="fullname"
+                                type="text"
                                 value={Fullname}
                                 onChange={handleChangeFullname}
                             />
@@ -112,8 +144,8 @@ const RegisterPage = () => {
                             </div>
                             <input
                                 className="bg-transparent flex-1 pl-1 focus:outline-none"
-                                name="email"
-                                type="email"
+                                name="phone"
+                                type="tel"
                                 value={Phone}
                                 onChange={handleChangePhone}
                             />
@@ -128,8 +160,8 @@ const RegisterPage = () => {
                             </div>
                             <input
                                 className="bg-transparent flex-1 pl-1 focus:outline-none"
-                                name="email"
-                                type="email"
+                                name="address"
+                                type="text"
                                 value={Address}
                                 onChange={handleChangeAddress}
                             />
@@ -211,6 +243,19 @@ const RegisterPage = () => {
                     </div>
                 )}
             </div>
+
+            <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };

@@ -1,6 +1,15 @@
 {
     "development": {
-        "getAllCart": "api/v1/cart"
+        "getCarts": "v1/cart",
+        "postCart": "v1/cart/addToCart",
+        "putCart": "v1/cart/update",
+        "deleteCart": "v1/cart/removeFromCart",
+        "getOrders": "v1/order",
+        "postOrder": "v1/order/addToOrder",
+        "deleteOrder": "v1/order/removeFromCart",
+        "register": "v1/auth/register",
+        "login": "v1/auth/login",
+        "forgetPassword": "v1/auth/forgetPassword"
     },
     "production": {}
 }

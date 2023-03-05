@@ -7,7 +7,8 @@ import {
     cartProducts,
     stateCartPage,
 } from '~/utils/redux/selectors/cartSelector';
-import { fetchAllCarts } from '~/utils/redux/slices/cartSlice';
+import { tokenSelector } from '~/utils/redux/selectors/userSelector'; 
+import { fetchCarts } from '~/utils/redux/slices/cartSlice';
 
 import { Spin } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -18,8 +19,12 @@ const CartPage = () => {
 
     const products = useSelector(cartProducts);
     const state = useSelector(stateCartPage);
+    const token = useSelector(tokenSelector);
 
-    const handleChangeCheckbox = (cartID) => {};
+    const handleChangeCheckbox = (cartID) => {
+        //const cart = products.find(value => value.cart)
+
+    };
 
     const handleClickInc = (cartID) => {};
 
@@ -32,7 +37,7 @@ const CartPage = () => {
     const handleClickPayment = () => {};
 
     useEffect(() => {
-        dispatch(fetchAllCarts());
+        dispatch(fetchCarts(token.accessToken));
     }, []);
 
     const sumPrice = useMemo(

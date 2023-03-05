@@ -2,6 +2,8 @@ import React, { Fragment } from 'react';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
+import AuthContainer from './containers/AuthContainer';
+
 import { privateRoute, publicRoute } from './routes';
 
 function App() {
@@ -42,9 +44,11 @@ function App() {
                         key={index}
                         path={path}
                         element={
-                            <Layout>
-                                <Page />
-                            </Layout>
+                            <AuthContainer>
+                                <Layout>
+                                    <Page />
+                                </Layout>
+                            </AuthContainer>
                         }
                     />
                 );

@@ -1,11 +1,11 @@
 import React from "react";
 
+import FormAddProduct from "~/components/FormAddProduct";
+
 const AdminPage = () => {
     return (
-        <div>
-            <div>
-                Form to add new shoe
-            </div>
+        <div className="flex flex-row">
+            <FormAddProduct />
 
             <div>
                 Information of All Shoes

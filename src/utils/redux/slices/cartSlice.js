@@ -23,15 +23,15 @@ const cartSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchAllCarts.pending, (state) => {
+            .addCase(fetchCarts.pending, (state) => {
                 state.isLoading = true;
                 state.isError = false;
             })
-            .addCase(fetchAllCarts.fulfilled, (state, action) => {
+            .addCase(fetchCarts.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.products = action.payload;
             })
-            .addCase(fetchAllCarts.rejected, (state) => {
+            .addCase(fetchCarts.rejected, (state) => {
                 state.isLoading = false;
                 state.isError = true;
             });
@@ -40,10 +40,8 @@ const cartSlice = createSlice({
 
 export default cartSlice;
 
-export const fetchAllCarts = createAsyncThunk('cart/getAllCarts', async () => {
-    const data = await cartService.getAllCarts();
-
-    console.log('Data: ', data);
+export const fetchCarts = createAsyncThunk('cart/getCarts', async (accessToken) => {
+    const data = await cartService.getCarts(accessToken);
 
     return data;
 });
