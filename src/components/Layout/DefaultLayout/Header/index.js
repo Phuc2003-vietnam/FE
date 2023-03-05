@@ -13,7 +13,7 @@ const SearchInput = () => {
     const [data,setData] = useState([])
 
     useEffect(() => {
-        axios.get('https://webdevshoes-ha3p.onrender.com/v1/shoes/all-shoes')
+        axios.get('https://wds-sell-shoes.onrender.com/v1/shoes/all-shoes')
         .then(res => setData(res.data))
     }, [])
 
