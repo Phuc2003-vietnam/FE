@@ -9,7 +9,8 @@
         "deleteOrder": "v1/order/removeFromCart",
         "register": "v1/auth/register",
         "login": "v1/auth/login",
-        "forgetPassword": "v1/auth/forgetPassword"
+        "forgetPassword": "v1/auth/forgetPassword",
+        "postShoe": "/v1/shoes/create"
     },
     "production": {}
 }

@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
+import { useSelector } from "react-redux";
+
+import { tokenSelector } from "~/utils/redux/selectors/userSelector";
 
 import { ToastContainer, toast } from "react-toastify";
+
+import { postShoe } from "~/utils/axios/product";
 
 const FormAddProduct = () => {
     const [ProductName, setProductName] = useState('');
@@ -8,6 +13,8 @@ const FormAddProduct = () => {
     const [Price, setPrice] = useState(0);  
     const [Image, setImage] = useState(null);
     const thumbnailRef = useRef();
+
+    const token = useSelector(tokenSelector);
 
     const handleChangeProductName = e => {
         const value = e.target.value;
@@ -38,7 +45,7 @@ const FormAddProduct = () => {
         setImage(objectUrl);
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const image = thumbnailRef.current.files[0];
 
         if (ProductName === '') {
@@ -58,6 +65,18 @@ const FormAddProduct = () => {
             toast.error('Thumbnail is required');
             return;
         }
+        try {
+            await postShoe(token.accessToken, ProductName, Price, thumbnailRef.current.files[0], Description);
+            toast.info('Submit new shoe success');
+            setProductName('');
+            setPrice(0);
+            setDescription('');
+            URL.revokeObjectURL(Image);
+            setImage(null)
+        } catch (err) {
+            toast.error('Submit new shoe fail');
+        }
+
     }
 
     return ( 

@@ -84,7 +84,7 @@ const RegisterPage = () => {
             dispatch(userSlice.actions.changeUserData(data))
             // TODO: navigate to HomePage (or another page)
             // const page = params.page || '/';
-            navigate(-1, {
+            navigate('/', {
                 replace: true
             });
         } catch (err) {

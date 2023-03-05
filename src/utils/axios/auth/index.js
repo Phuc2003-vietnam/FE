@@ -21,8 +21,6 @@ export const register = (email, password, fullname, phone, address) => {
                 email, password, fullname, address, phone
             });
 
-            console.log("res: ", res);
-
             const data = res.data;
             const token = data.token;
             saveToken(token);
@@ -40,8 +38,6 @@ export const login = (email, password) => {
                 email, password
             });
 
-            console.log("res: ", res);
-
             const data = res.data;
             const token = data.token;
             saveToken(token);
@@ -56,8 +52,6 @@ export const forgetPassword = (email) => {
     return new Promise(async (resolve, reject) => {
         try {
             const res = await Axios.post(config.forgetPassword, {email});
-
-            console.log("res: ", res);
 
             const token = res.data.token;
             saveToken(token);

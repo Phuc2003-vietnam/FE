@@ -18,7 +18,7 @@ const userSlice = createSlice({
             state.fullname = action.payload.fullname;
             state.phone = action.payload.phone;
             state.address = action.payload.address;
-            state.role = action.payload.role;
+            state.role = action.payload.data;
         }
     },
     extraReducers: (builder) => {},

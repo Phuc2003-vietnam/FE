@@ -8,7 +8,7 @@ const AdminPage = () => {
             <FormAddProduct />
 
             <div>
-                Information of All Shoes
+                
             </div>
         </div>
     );

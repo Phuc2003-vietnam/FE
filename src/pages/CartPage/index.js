@@ -22,7 +22,7 @@ const CartPage = () => {
     const token = useSelector(tokenSelector);
 
     const handleChangeCheckbox = (cartID) => {
-        //const cart = products.find(value => value.cart)
+        const cart = products.find(value => value.cartId)
 
     };
 
@@ -67,7 +67,7 @@ const CartPage = () => {
                 <div className="w-full flex flex-roww justify-evenly items-start flex-wrap">
                     {products.map((value) => (
                         <Cart
-                            key={value.cartID}
+                            key={value.cartId}
                             name={value.productName}
                             count={value.count}
                             price={value.price}

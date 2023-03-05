@@ -9,7 +9,7 @@ const store = configureStore({
     reducer: {
         cart: cartSlice.reducer,
         purchaseHistory: purchaseHistorySlice.reducer,
-        user: logger(userSlice.reducer),
+        user: userSlice.reducer,
     },
 });
 
