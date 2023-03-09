@@ -3,8 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 const userSlice = createSlice({
     name: 'user',
     initialState: {
-        /**@type {string | undefined} */
+        /**@type {{accessToken: string, refreshToken: string} | undefined} */
         token: undefined,
+        isModified: false,
 
         /**@type {boolean} */
         role: false,
@@ -19,6 +20,10 @@ const userSlice = createSlice({
             state.phone = action.payload.phone;
             state.address = action.payload.address;
             state.role = action.payload.data;
+            state.isModified = false;
+        },
+        tokenExpire: state => {
+            state.isModified = true;
         }
     },
     extraReducers: (builder) => {},

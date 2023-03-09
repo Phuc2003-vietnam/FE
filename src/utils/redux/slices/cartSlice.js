@@ -19,6 +19,7 @@ const cartSlice = createSlice({
         products: initProducts,
         isLoading: false,
         isError: false,
+        errorStatus: 0,
     },
     reducers: {},
     extraReducers: (builder) => {
@@ -31,7 +32,7 @@ const cartSlice = createSlice({
                 state.isLoading = false;
                 state.products = action.payload;
             })
-            .addCase(fetchCarts.rejected, (state) => {
+            .addCase(fetchCarts.rejected, (state, action) => {
                 state.isLoading = false;
                 state.isError = true;
             });

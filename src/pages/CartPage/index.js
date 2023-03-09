@@ -37,11 +37,15 @@ const CartPage = () => {
     const handleClickPayment = () => {};
 
     useEffect(() => {
+        if (!token || !token.accessToken) {
+            return;
+        }
+        
         dispatch(fetchCarts(token.accessToken));
-    }, []);
+    }, [token]);
 
     const sumPrice = useMemo(
-        () =>
+        () => products && products.length > 0 &&
             products.reduce((total, value) => {
                 if (value.isCheck) {
                     return total + value.price * value.count;
@@ -57,7 +61,7 @@ const CartPage = () => {
             <div className="w-screen h-screen flex items-center justify-center bg-gray-300">
                 <Spin
                     indicator={<LoadingOutlined style={{ fontSize: 100 }} />}
-                    spin
+                    spin="true"
                 />
             </div>
         );
@@ -65,7 +69,7 @@ const CartPage = () => {
         return (
             <div className="w-full overflow-auto">
                 <div className="w-full flex flex-roww justify-evenly items-start flex-wrap">
-                    {products.map((value) => (
+                    {products && products.length > 0 && products.map((value) => (
                         <Cart
                             key={value.cartId}
                             name={value.productName}

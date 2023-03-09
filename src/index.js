@@ -3,10 +3,19 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter, BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import store from './utils/redux';
+
+let Router;
+const NODE_ENV = process.env.NODE_ENV;
+if (NODE_ENV == 'development') {
+    Router = BrowserRouter;
+}
+else {
+    Router = HashRouter
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
